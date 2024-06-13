@@ -1,0 +1,11 @@
+
+spring:
+  application:
+    name: livecat
+  datasource:
+    url: jdbc:sqlite:./database.db
+    #    username: root
+    #    password: root
+    driver-class-name: org.sqlite.JDBC
+server:
+  port: 8889

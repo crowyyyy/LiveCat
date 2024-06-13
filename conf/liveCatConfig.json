@@ -1,0 +1,13 @@
+{
+	"path":{
+		"SectionWork":"./config/SectionWork",
+		"Section":"./config/Section",
+		"LiveRecord":"./config/LiveRecord",
+		"Publish":"./config/Publish",
+		"Barrage":"./config/Barrage",
+		"Hot":"./config/Hot",
+		"Creeper":"./config/Creeper",
+		"Account":"./config/Account"
+	},
+	"autoStart":{}
+}
