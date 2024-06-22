@@ -8,7 +8,8 @@ public class LiveCatLoggerFactory {
         INIT("SystemInit"),
         HOT("HotModule"),
         LIVE("LiveModule"),
-        Creeper("CreeperModule");
+        CREEPER("CreeperModule"),
+        BARRAGE("Barrage"), FILE("File");
 
         LoggerType(String name){
             this.loggerName = name;

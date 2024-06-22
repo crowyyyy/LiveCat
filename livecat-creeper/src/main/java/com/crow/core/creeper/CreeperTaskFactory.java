@@ -27,4 +27,25 @@ public class CreeperTaskFactory {
         return null;
 
     }
-}
+
+    /**
+     *
+     * @param group 功能组
+     * @param platform 平台
+     * @param params
+     * @return
+     * @param <T>
+     */
+    public static <T extends CreeperTask> T fastCreateTask(String group,String platform,Object... params){
+        String uniqueId = CreeperConfigFactory.buildUniqueId(group, platform);
+        CreeperTaskConfig taskConfig = CreeperConfigFactory.buildConfig(uniqueId, params);
+        Class<? extends CreeperTaskConfig> clazz = taskConfig.getClass();
+        Creeper ano = clazz.getAnnotation(Creeper.class);
+        try {
+            return (T) ano.creeperTask().getConstructor(CreeperTaskConfig.class).newInstance(taskConfig);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }}

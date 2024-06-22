@@ -76,14 +76,12 @@ public class LiverFollowerPlugin extends CommonPlugin {
 
     }
 
+
     private void startFocus(){
         focusLivers.forEach(this::appendFocusTask);
     }
 
-    /**
-     * 添加监控定时任务
-     * @param liver
-     */
+
     private void appendFocusTask(FocusLiver liver){
         CreeperTask<Live> task = CreeperTaskFactory.createTask(CreeperConfigFactory.buildUniqueId(GroupConst.ONLINE_CHECK, liver.getPlatform()), liver);
         FollowTask followTask = new FollowTask(liver,task);
@@ -134,9 +132,20 @@ public class LiverFollowerPlugin extends CommonPlugin {
          * 开启直播流获取服务
          */
         private void doFocus() {
-            String uniqueId = CreeperConfigFactory.buildUniqueId(GroupConst.LIVE_STREAM, liver.getPlatform());
-            CreeperTask task = CreeperTaskFactory.createTask(uniqueId, liver);
-            CreeperTaskManager.getInstance().submitTask(task);
+            // 直播流下载
+            loadLiveStream();
+            // 直播弹幕拉取
+            loadBarrage();
+        }
+
+        private void loadBarrage() {
+            CreeperTask loadBarrageTask = CreeperTaskFactory.fastCreateTask(GroupConst.LOAD_BARRAGE, liver.getPlatform(), liver);
+            CreeperTaskManager.getInstance().submitTask(loadBarrageTask);
+        }
+
+        private void loadLiveStream() {
+            CreeperTask loadStreamTask = CreeperTaskFactory.fastCreateTask(GroupConst.LIVE_STREAM, liver.getPlatform(), liver);
+            CreeperTaskManager.getInstance().submitTask(loadStreamTask);
         }
 
     }

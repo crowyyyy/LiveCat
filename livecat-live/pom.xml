@@ -25,5 +25,9 @@
             <groupId>com.crow</groupId>
             <artifactId>livecat-creeper</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.crow</groupId>
+            <artifactId>livecat-hot</artifactId>
+        </dependency>
     </dependencies>
 </project>

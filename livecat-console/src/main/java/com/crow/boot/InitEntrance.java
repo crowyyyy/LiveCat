@@ -39,6 +39,7 @@ public class InitEntrance extends SimpleLogger implements ApplicationContextAwar
             // 启动所有需要开机启动的插件
             initPlugins(plugins);
             // 执行插件后置初始化操作
+            postInitPlugins(plugins);
 
         }catch (Exception e){
             log.error("初始化项目失败，原因是：{}",e.getMessage() );
@@ -61,8 +62,6 @@ public class InitEntrance extends SimpleLogger implements ApplicationContextAwar
                 }
             }
         }
-        // 开机自启动插件
-        postInitPlugins(plugins);
     }
 
     /**

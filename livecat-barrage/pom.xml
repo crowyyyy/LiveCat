@@ -21,5 +21,9 @@
             <groupId>com.crow</groupId>
             <artifactId>livecat-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.crow</groupId>
+            <artifactId>livecat-creeper</artifactId>
+        </dependency>
     </dependencies>
 </project>

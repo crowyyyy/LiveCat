@@ -30,6 +30,20 @@ public abstract class CommonPlugin extends SimpleLogger implements ConfigurableP
         this.log = LiveCatLoggerFactory.getLogger(moduleName);
     }
 
+    @Override
+    public boolean init() {
+        return true;
+    }
+
+    @Override
+    public void postInit() {
+    }
+
+    @Override
+    public void shutdown() {
+
+    }
+
     public String getPluginName() {
         return pluginName;
     }

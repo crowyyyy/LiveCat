@@ -9,7 +9,6 @@ import lombok.Data;
 
 import java.util.HashMap;
 
-@Data
 @Creeper(creeperName = "B站直播检测爬虫",
         creeperTask = BilibiliOnlineCheckCreeperTask.class,
         description = "用于检测B站主播是否开播，并且获取直播详细信息",

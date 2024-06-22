@@ -3,6 +3,9 @@ package com.crow.file.cache;
 import com.crow.file.LiveCatConfigurationFile;
 import org.springframework.stereotype.Component;
 
+/**
+ *
+ */
 @Component
 public class CacheManager {
         private FileCache<LiveCatConfigurationFile> SystemConfigFileCache;

@@ -26,6 +26,18 @@ public abstract class CreeperTaskConfig {
         return header;
     }
 
+    public String getUserAgent() {
+        return UserAgent;
+    }
+
+    public String getOrigin() {
+        return Origin;
+    }
+
+    public String getReferer() {
+        return Referer;
+    }
+
     public Map<String, String> getCookie() {
         return cookie;
     }

@@ -1,7 +1,7 @@
 package com.crow.file;
 
 /**
- * 配置文件元数据
+ * 文件基础属性
  */
 public abstract class ConfigFile<T> {
     protected String fileName;

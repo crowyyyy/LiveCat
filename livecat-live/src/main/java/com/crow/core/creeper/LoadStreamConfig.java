@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.nio.file.Path;
 @Data
-public abstract class LiveStreamConfig extends LoadVideoConfig {
+public abstract class LoadStreamConfig extends LoadVideoConfig {
     // 房间号
     protected String roomId;
     // 房间名称
@@ -18,7 +18,7 @@ public abstract class LiveStreamConfig extends LoadVideoConfig {
 
     protected boolean showDownloadTable;
 
-    public LiveStreamConfig(String roomId, String videoPath, String videoName, boolean convertToMp4) {
+    public LoadStreamConfig(String roomId, String videoPath, String videoName, boolean convertToMp4) {
         super(videoPath,videoName);
         this.roomId = roomId;
         this.convertToMp4 = convertToMp4;
@@ -26,7 +26,7 @@ public abstract class LiveStreamConfig extends LoadVideoConfig {
         this.suffix = convertToMp4?".mp4":suffix;
     }
 
-    public LiveStreamConfig(String roomId, String liver, String videoPath, String videoName, boolean convertToMp4) {
+    public LoadStreamConfig(String roomId, String liver, String videoPath, String videoName, boolean convertToMp4) {
         super(videoPath,videoName);
         this.roomId = roomId;
         this.convertToMp4 = convertToMp4;
@@ -44,9 +44,9 @@ public abstract class LiveStreamConfig extends LoadVideoConfig {
 //        return FileNameBuilder.buildVideoFileNameNoSuffix(liver,startTime);
 //    }
 //
-//    @Override
-//    public String getTaskId() {
-//        String taskId = super.getTaskId();
-//        return String.format(taskId+"_%s",liverName);
-//    }
+    @Override
+    public String getTaskId() {
+        String taskId = super.getTaskId();
+        return String.format(taskId+"_%s",liverName);
+    }
 }

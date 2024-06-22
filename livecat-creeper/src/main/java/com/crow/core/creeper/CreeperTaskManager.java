@@ -29,8 +29,9 @@ public class CreeperTaskManager {
             runningTask.put(uniqueId,future);
         }
     }
-    public void submitTaskWithCallback(CreeperTask<?> task, Callback callback){
+    public <T> void submitTaskWithCallback(CreeperTask<T> task, Callback<T> callback){
         task.registerCallback(callback);
+        submitTask(task);
     }
 
     public void removeTask(String uniqueId){
