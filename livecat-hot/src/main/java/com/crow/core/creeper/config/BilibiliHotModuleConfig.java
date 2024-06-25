@@ -10,7 +10,7 @@ import com.crow.core.creeper.task.BilibiliHotModuleLoadTask;
 @Creeper(creeperName = "B站热门模块",
         creeperTask = BilibiliHotModuleLoadTask.class,
         description = "获取b站的热门模块，按照人气排行",
-        group = GroupConst.HOT_LIVE,
+        group = GroupConst.HOT_MODULE,
         platform = SystemConst.BILIBILI
 )
 public class BilibiliHotModuleConfig extends CreeperTaskConfig {

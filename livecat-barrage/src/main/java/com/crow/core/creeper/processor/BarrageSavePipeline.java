@@ -48,7 +48,7 @@ public class BarrageSavePipeline<T extends Barrage> implements Pipeline {
         T barrage;
         while (cache.size()!=0) {
             if((barrage = cache.poll()) != null){
-                // TODO 立刻刷盘水位线
+                // TODO 刷盘水位线
                 // 追加内容
                 try {
                     filecache.append(barrage, keys);

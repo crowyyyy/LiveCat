@@ -15,4 +15,13 @@ import com.crow.core.creeper.task.BiliBiliHotLiveCreeperTask;
 
 )
 public class BilibiliLiveScanConfig  extends CreeperTaskConfig {
+
+    public BilibiliLiveScanConfig() {
+        this.url = "https://api.live.bilibili.com/xlive/web-interface/v1/second/getListByArea?sort=online&page=1&page_size=100&platform=web";
+    }
+
+    public BilibiliLiveScanConfig(String parent_area_id,String area_id,int page){
+        this.url = String.format("https://api.live.bilibili.com/xlive/web-interface/v1/second/getList?" +
+                "platform=web&parent_area_id=%s&area_id=%s&page=%s",parent_area_id,area_id,page);
+    }
 }

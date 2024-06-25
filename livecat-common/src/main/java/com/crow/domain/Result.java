@@ -14,6 +14,10 @@ public class Result<T> {
         return result;
     }
 
+    public static Result success(){
+        return success(null);
+    }
+
     public static <K> Result<K> newErrorResult(String errCode, String errMsg) {
         Result<K> errorResult = new Result<>();
         errorResult.success = Boolean.FALSE;

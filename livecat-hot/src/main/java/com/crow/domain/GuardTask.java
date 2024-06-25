@@ -35,7 +35,7 @@ public class GuardTask implements Runnable {
                 })
         );
         // 全平台热门直播间
-        CreeperTask<List<Live>> hotModuleLiveTask = CreeperTaskFactory.fastCreateTask(GroupConst.HOT_MODULE_LIVE, platform);
+        CreeperTask<List<Live>> hotModuleLiveTask = CreeperTaskFactory.fastCreateTask(GroupConst.HOT_LIVE, platform);
         taskManager.submitTaskWithCallback(
                 hotModuleLiveTask,
                 (res->{
@@ -43,7 +43,6 @@ public class GuardTask implements Runnable {
                 })
 
         );
-        // 模块热门直播间
     }
 
 

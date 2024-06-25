@@ -1,8 +1,11 @@
 package com.crow.domain;
 
+import lombok.Data;
+
 /**
  * 弹幕实体类
  */
+@Data
 public class Barrage {
     // 弹幕唯一id
     private String mid;

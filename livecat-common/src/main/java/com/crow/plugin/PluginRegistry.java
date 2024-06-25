@@ -54,6 +54,13 @@ public class PluginRegistry {
         return allPlugins.get(pluginName);
     }
 
+    public boolean closePlugin(String pluginName){
+        allPlugins.get(pluginName).shutdown();
+        allPlugins.remove(pluginName);
+//        Optional.ofNullable(modulePluginTable.get())
+        return true;
+    }
+
     /**
      * 检查插件依赖
      * @return

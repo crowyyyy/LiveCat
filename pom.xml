@@ -149,6 +149,13 @@
                 <artifactId>sqlite-jdbc</artifactId>
                 <version>${sqlite.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-hive_2.11</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+
             <!--爬虫：web magic-->
             <dependency>
                 <groupId>us.codecraft</groupId>
@@ -161,6 +168,21 @@
                 <artifactId>webmagic-extension</artifactId>
                 <version>${webmagic.version}</version>
             </dependency>
+            <!-- Apache HBase Client -->
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-client</artifactId>
+                <version>2.0.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
