@@ -1,7 +1,7 @@
 package com.crow.util;
 
 
-import com.crow.file.FileVO;
+import com.crow.file.FileVo;
 import com.crow.file.method.FileCondition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -166,44 +166,44 @@ public class FileUtil {
         return time.replace(":", "_");
     }
 
-    public static List<FileVO> listFiles(String dirPath, List<FileVO> fileVOS){
-        return listFiles(new File(dirPath),fileVOS);
+    public static List<FileVo> listFiles(String dirPath, List<FileVo> fileVos){
+        return listFiles(new File(dirPath), fileVos);
     }
-    public static List<FileVO> listFiles(File folder,List<FileVO> fileVOS) {
+    public static List<FileVo> listFiles(File folder, List<FileVo> fileVos) {
         if (folder.isDirectory()) {
             File[] files = folder.listFiles();
             if (files != null) {
                 for (File file : files) {
                     if (file.isFile()) {
                         // 处理文件
-                        FileVO fileVO;
+                        FileVo fileVO;
                         if ((fileVO=processFile(file))!=null) {
-                            fileVOS.add(fileVO);
+                            fileVos.add(fileVO);
                         }
                     } else if (file.isDirectory()) {
                         // 递归处理子文件夹
-                        listFiles(file,fileVOS);
+                        listFiles(file, fileVos);
                     }
                 }
             }
         }
-        return fileVOS;
+        return fileVos;
     }
 
-    public static FileVO processFile(File file) {
+    public static FileVo processFile(File file) {
         if (file.isFile()) {
             String fileName = file.getName();
             long fileSize = file.length();
             String createTime = TimeUtil.getFormatDate(file.lastModified());
-            return new FileVO(fileName, file.getPath(), createTime, fileSize);
+            return new FileVo(fileName, file.getPath(), createTime, fileSize);
         }
         return null;
     }
 
     public static void main(String[] args) {
-        List<FileVO> fileVOS = FileUtil.listFiles("./config/LiveRecord/", new ArrayList<>());
-        System.out.println(fileVOS.stream().filter(fileVO -> {
-            return fileVO.getFileName().endsWith(".flv");
+        List<FileVo> fileVos = FileUtil.listFiles("./config/LiveRecord/", new ArrayList<>());
+        System.out.println(fileVos.stream().filter(fileVo -> {
+            return fileVo.getFileName().endsWith(".flv");
         }).collect(Collectors.toList()));
     }
 }

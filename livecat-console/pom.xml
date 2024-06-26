@@ -37,5 +37,9 @@
             <groupId>com.crow</groupId>
             <artifactId>livecat-data</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.crow</groupId>
+            <artifactId>livecat-creeper</artifactId>
+        </dependency>
     </dependencies>
 </project>

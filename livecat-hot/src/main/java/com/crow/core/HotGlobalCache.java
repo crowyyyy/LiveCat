@@ -4,7 +4,7 @@ import com.crow.constant.GroupConst;
 import com.crow.core.creeper.CreeperTaskFactory;
 import com.crow.core.task.CreeperTask;
 import com.crow.domain.Live;
-import com.crow.domain.module.Module;
+import com.crow.domain.module.HotModuleLive;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ public class HotGlobalCache {
 
     private Map<String/*platform*/, List<Live>> platformHotLiveCache = new ConcurrentHashMap<>();
 
-    private Map<String, List<Module>> platformHotModuleCache = new ConcurrentHashMap<>();
+    private Map<String, List<HotModuleLive>> platformHotModuleCache = new ConcurrentHashMap<>();
 
     private Map<String/*platform*/,Map<String/*moduleId*/,Live>> moduleHotLiveCache = new ConcurrentHashMap<>();
 
@@ -25,8 +25,8 @@ public class HotGlobalCache {
         platformHotLiveCache.put(platform,liveList);
     }
 
-    public void updateHotModule(String platform, List<Module> moduleList){
-        platformHotModuleCache.put(platform,moduleList);
+    public void updateHotModule(String platform, List<HotModuleLive> hotModuleLiveList){
+        platformHotModuleCache.put(platform, hotModuleLiveList);
     }
 
 
@@ -43,23 +43,22 @@ public class HotGlobalCache {
         return cache;
     }
 
-    public List<Module> getHotModule(String platform){
-        List<Module> modules = platformHotModuleCache.get(platform);
-        if(modules == null){
+    public List<HotModuleLive> getHotModule(String platform){
+        List<HotModuleLive> hotModuleLives = platformHotModuleCache.get(platform);
+        if(hotModuleLives == null){
             CreeperTask creeperTask = CreeperTaskFactory.fastCreateTask(GroupConst.HOT_MODULE, platform);
             // TODO 同步任务
-            modules = (List<Module>) creeperTask.start();
+            hotModuleLives = (List<HotModuleLive>) creeperTask.start();
         }
-        return modules;
+        return hotModuleLives;
     }
 
-    public List<Live> getPlatformHoveLive(String platform){
+    public List<Live> getPlatformHotLive(String platform){
         List<Live> lives = platformHotLiveCache.get(platform);
         if(lives==null){
             CreeperTask creeperTask = CreeperTaskFactory.fastCreateTask(GroupConst.HOT_LIVE, platform);
             // TODO 同步任务
             lives = (List<Live>) creeperTask.start();
-
         }
         return lives;
     }

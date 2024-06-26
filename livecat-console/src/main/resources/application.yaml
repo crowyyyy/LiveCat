@@ -9,3 +9,9 @@ spring:
     driver-class-name: org.sqlite.JDBC
 server:
   port: 8889
+
+livecat:
+  proxy:
+    enable: 0
+    address: 127.0.0.1
+    port: 7890

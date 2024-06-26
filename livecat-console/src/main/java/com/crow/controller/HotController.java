@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/hot")
@@ -25,7 +23,7 @@ public class HotController {
      */
     @GetMapping("/hotLive/module")
     public Result getAllHotModule(@RequestParam(defaultValue = "0") int latest, @RequestParam String platform) {
-        return null;
+        return Result.success(hotService.getHotModule(platform));
     }
 
     /**
@@ -36,11 +34,7 @@ public class HotController {
      */
     @GetMapping("/hotLive/live")
     public Result getAllHotLive(@RequestParam(defaultValue = "0") int latest,@RequestParam String platform){
-//
-//        if(lives==null){
-//            return Result.error("403","暂无该数据");
-//        }
-//        return Result.success(Map.of("list",lives));
+        return Result.success(hotService.getGlobalHotLive(platform));
     }
 
     /**
@@ -51,11 +45,7 @@ public class HotController {
      */
     @GetMapping("/hotLive/modelLive")
     public Result getHotModuleLives(@RequestParam String moduleId,@RequestParam String platform){
-//        HotModule moduleHotLives = hotModuleService.hotModuleApi().getModuleList(platform, moduleId);
-//        if(moduleHotLives==null||moduleHotLives.getHotLives()==null){
-//            return Result.error("403","暂无该数据");
-//        }
-//        return Result.success(Map.of("list",moduleHotLives.getHotLives()));
+        return Result.success(hotService.getHotLiveByModule(moduleId,platform));
     }
 
 

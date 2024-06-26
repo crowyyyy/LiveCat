@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class CacheManager {
         private FileCache<LiveCatConfigurationFile> SystemConfigFileCache;
 
+
         public FileCache<LiveCatConfigurationFile> getSystemConfigFileCache() {
                 return SystemConfigFileCache;
         }

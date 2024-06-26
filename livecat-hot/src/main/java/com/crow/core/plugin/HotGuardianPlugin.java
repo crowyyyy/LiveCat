@@ -2,6 +2,7 @@ package com.crow.core.plugin;
 
 import cn.hutool.core.thread.NamedThreadFactory;
 import com.crow.constant.ModuleName;
+import com.crow.constant.SystemConst;
 import com.crow.domain.GuardTask;
 import com.crow.plugin.CommonPlugin;
 import com.crow.plugin.annotation.Plugin;
@@ -44,5 +45,8 @@ public class HotGuardianPlugin extends CommonPlugin {
     /**
      * 初始化需要指定的平台
      */
-
+    @Override
+    public void postInit() {
+        registerGuardian(SystemConst.BILIBILI);
+    }
 }

@@ -1,6 +1,8 @@
 package com.crow.core.creeper.processor;
 
+import com.crow.core.BarrageFileCache;
 import com.crow.core.CreeperTaskConfig;
+import com.crow.core.creeper.BarrageSaveFile;
 import com.crow.core.creeper.config.AbstractFetchBarrageConfig;
 import com.crow.domain.Barrage;
 import com.crow.file.cache.FileCache;
@@ -24,9 +26,18 @@ public class BarrageSavePipeline<T extends Barrage> implements Pipeline {
     private AbstractFetchBarrageConfig config;
 
     private List<T> res;
+    //  弹幕文件
+    private BarrageSaveFile<T> barrageSaveFile;
 
     public BarrageSavePipeline(AbstractFetchBarrageConfig config) {
         this.config = config;
+        this.cache = new ConcurrentLinkedQueue<>();
+        try {
+            this.barrageSaveFile = new BarrageSaveFile(config, cache);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        this.filecache = new BarrageFileCache(barrageSaveFile);
     }
 
     private Logger logger = LoggerFactory.getLogger(LiveCatLoggerFactory.LoggerType.BARRAGE.getLoggerName());

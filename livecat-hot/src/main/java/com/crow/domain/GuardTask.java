@@ -5,7 +5,7 @@ import com.crow.core.HotGlobalCache;
 import com.crow.core.creeper.CreeperTaskFactory;
 import com.crow.core.creeper.CreeperTaskManager;
 import com.crow.core.task.CreeperTask;
-import com.crow.domain.module.Module;
+import com.crow.domain.module.HotModuleLive;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class GuardTask implements Runnable {
         CreeperTaskManager taskManager = CreeperTaskManager.getInstance();
         HotGlobalCache cache = HotGlobalCache.getInstance();
         // 热门模块
-        CreeperTask<List<Module>> hotModuleTask = CreeperTaskFactory.fastCreateTask(GroupConst.HOT_MODULE, platform);
+        CreeperTask<List<HotModuleLive>> hotModuleTask = CreeperTaskFactory.fastCreateTask(GroupConst.HOT_MODULE, platform);
         taskManager.submitTaskWithCallback(
                 hotModuleTask,
                 (res->{

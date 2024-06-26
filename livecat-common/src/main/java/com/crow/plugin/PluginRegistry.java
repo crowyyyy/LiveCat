@@ -21,7 +21,7 @@ public class PluginRegistry {
     // 全局插件注册表
     private ConcurrentHashMap<String/*pluginName*/, CommonPlugin> allPlugins = new ConcurrentHashMap<>();
     // 模块插件表
-    private ConcurrentHashMap<String/*moduleName*/, Set<CommonPlugin>> modulePluginTable = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String/*moduleName*/, List<CommonPlugin>> modulePluginTable = new ConcurrentHashMap<>();
     // 自启动标识表
     private ConcurrentHashMap<String/*pluginName*/, Boolean> autoStartTable = new ConcurrentHashMap<>();
     // 插件依赖表
@@ -31,7 +31,7 @@ public class PluginRegistry {
         return Optional.ofNullable(allPlugins.put(plugin.getPluginName(), plugin))
                 .map(existingPlugin -> false)
                 .orElseGet(() -> {
-                    modulePluginTable.computeIfAbsent(plugin.getModuleName(), k -> new HashSet<>()).add(plugin);
+                    modulePluginTable.computeIfAbsent(plugin.getModuleName(), k -> new ArrayList<>()).add(plugin);
                     return true;
                 });
     }
@@ -54,6 +54,10 @@ public class PluginRegistry {
         return allPlugins.get(pluginName);
     }
 
+    public List<CommonPlugin> getAllPlugins() {
+        return new ArrayList<>(allPlugins.values());
+    }
+
     public boolean closePlugin(String pluginName){
         allPlugins.get(pluginName).shutdown();
         allPlugins.remove(pluginName);
@@ -61,6 +65,9 @@ public class PluginRegistry {
         return true;
     }
 
+    public List<CommonPlugin> getPluginsByModule(String moduleName){
+        return modulePluginTable.get(moduleName);
+    }
     /**
      * 检查插件依赖
      * @return

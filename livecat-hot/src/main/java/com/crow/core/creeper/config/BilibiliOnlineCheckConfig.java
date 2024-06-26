@@ -34,4 +34,7 @@ public class BilibiliOnlineCheckConfig extends CreeperTaskConfig {
         this.cookie.put("SESSDATA","7c7e9652%2C1729350060%2C71d8d%2A42CjA726Tzc1AeFZbEgotE2LJni3QEObSx7WQuTV0lsNPpF2s7f9zOcq044cJsL1oA0GUSVnllTXlJUVJIQnB1NVdZcFRGNFdWOUFxNkdaVHBsSWdoU2s1QnFYZlM1c1FDNnFiMVRpamc0eTZWTEZScGdJMFA1ZER5WVRTdWNfMFRieXJwbFFGa1FnIIEC");
     }
 
+    public String getLiverName() {
+        return liverName;
+    }
 }

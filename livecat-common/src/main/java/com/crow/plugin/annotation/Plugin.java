@@ -14,6 +14,6 @@ public @interface Plugin {
     String pluginNameCN();
     String moduleName();
     String[] dependentPlugins();
-    boolean autoStart() default false;
-    boolean springSupported() default false;
+    boolean autoStart() default true;
+    boolean springSupported() default true;
 }

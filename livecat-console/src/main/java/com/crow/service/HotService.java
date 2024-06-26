@@ -2,7 +2,7 @@ package com.crow.service;
 
 import com.crow.domain.Live;
 import com.crow.domain.Partition;
-import com.crow.domain.module.Module;
+import com.crow.domain.module.HotModuleLive;
 
 import java.util.List;
 
@@ -19,16 +19,15 @@ public interface HotService {
     /**
      * 获取平台下的热门模块
      */
-    List<Module> getHotModule(String platform);
+    List<HotModuleLive> getHotModule(String platform);
 
     /**
      * 获取平台下热门模块的热门直播间
      * @param moduleId
-     * @param partitionId
      * @param platform
      * @return
      */
-    List<Live> getHotLiveByModule(String moduleId,String partitionId,String platform);
+    List<Live> getHotLiveByModule(String moduleId,String platform);
 
     /**
      * 获取平台下的热门直播

@@ -7,21 +7,18 @@ import org.springframework.context.annotation.Configuration;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
-/**
- * @author Genius
- * @date 2023/10/23 14:14
- **/
+
 @Data
 @Configuration
 public class HttpProxy {
 
-    @Value("${chopperbot.proxy.enable}")
+    @Value("${livecat.proxy.enable}")
     private int enable;
 
-    @Value("${chopperbot.proxy.address}")
+    @Value("${livecat.proxy.address}")
     private String address;
 
-    @Value("${chopperbot.proxy.port}")
+    @Value("${livecat.proxy.port}")
     private int port;
 
 

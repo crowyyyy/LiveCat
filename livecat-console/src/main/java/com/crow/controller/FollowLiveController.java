@@ -17,13 +17,13 @@ public class FollowLiveController {
 
     @GetMapping("/liveFollow/list")
     public Result followList(){
-        List<FocusLiver> focusLivers = hotModuleService.liverFollowApi().allFocusLivers();
+        List<FocusLiver> focusLivers = liveService.allFocusLivers();
         return Result.success(focusLivers);
     }
 
     @PostMapping("/liveFollow/add")
     public Result addFocus(@RequestBody FocusLiver focusLiver){
-        boolean follow = hotModuleService.liverFollowApi().follow(focusLiver);
+        boolean follow = liveService.follow(focusLiver);
         return Result.success(
                 Map.of("success",follow)
         );
@@ -31,7 +31,7 @@ public class FollowLiveController {
 
     @GetMapping("/liveFollow/delete")
     public Result deleteFocus(@RequestParam String platform, @RequestParam String liver){
-        boolean delete = hotModuleService.liverFollowApi().unFollow(platform,liver);
+        boolean delete = liveService.unFollow(platform,liver);
         return Result.success(
                 Map.of("success",delete)
         );

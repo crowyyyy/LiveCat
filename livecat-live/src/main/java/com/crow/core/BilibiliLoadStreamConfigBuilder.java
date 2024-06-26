@@ -7,9 +7,9 @@ import com.crow.domain.live.BiliBiliLive;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BilibiliLoadStreamConfigBuilder implements CreeperTaskConfigBuilder {
+public class BilibiliLoadStreamConfigBuilder implements CreeperTaskConfigBuilder<BilibiliLoadStreamConfig> {
     @Override
-    public CreeperTaskConfig build(Object... params) {
+    public BilibiliLoadStreamConfig build(Object... params) {
         if (params[0] instanceof FocusLiver liver){
             String liverName = liver.getLiverName();
             String roomId = liver.getRoomId();

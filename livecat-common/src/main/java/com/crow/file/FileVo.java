@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FileVO {
+public class FileVo {
     private String fileName;
     private String fileUrl;
     private String createTime;
